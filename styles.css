@@ -1424,7 +1424,7 @@ h2 {
     top: calc(100% + 10px);
     right: 20px;
     left: 20px;
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: stretch;
     gap: 2px;
@@ -1433,18 +1433,22 @@ h2 {
     border-radius: 20px;
     background: #fff;
     box-shadow: 0 26px 60px -24px rgba(37, 7, 85, 0.4);
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transform: translateY(-8px);
-    transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
   }
 
   .site-nav.open {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: none;
+    display: flex;
+    animation: nav-in 0.22s ease;
+  }
+
+  @keyframes nav-in {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
   }
 
   .site-nav > a:not(.btn) {
